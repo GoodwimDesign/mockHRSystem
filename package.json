@@ -1,0 +1,25 @@
+{
+  "name": "mockhrsystem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaySanders7/mockHRSystem.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RaySanders7/mockHRSystem/issues"
+  },
+  "homepage": "https://github.com/RaySanders7/mockHRSystem#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
+  }
+}
