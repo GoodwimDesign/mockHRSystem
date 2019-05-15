@@ -2,9 +2,9 @@
   "name": "mockhrsystem",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,8 @@
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "eslint": "^5.16.0"
+    "eslint": "^5.16.0",
+    "jest": "^24.8.0",
+    "supertest": "^4.0.2"
   }
 }
