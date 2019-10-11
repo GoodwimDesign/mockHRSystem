@@ -1,7 +1,7 @@
-var getCombinedData = function (employeeJson, phrasesJson, numberOfEmployees) {
+const getCombinedData = function (employeeJson, phrasesJson, numberOfEmployees = 2) {
     const combinedData = [];
     
-    for (var x = 0; x < numberOfEmployees; x++) {
+    for (let x = 0; x < numberOfEmployees; x++) {
         combinedData.push({
                 employeeId: employeeJson[x].employeeId,
                 performanceReviews: {
