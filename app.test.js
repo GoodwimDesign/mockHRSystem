@@ -20,9 +20,22 @@ describe('mockHRSystem', () => {
             });
         });
     });
-    describe('performance reviews GET', () => {
+    describe('performanceReviewPhrases GET', () => {
         test('returns performance reviews JSON', () => {
             return request(app)
+            .get('/performanceReviewPhrases')
+            .then(response => {
+                expect(response.body).toStrictEqual(performanceReviewPhrasesJson);
+            });
+        });
+        test('returns status code 200', () => {
+            return request(app)
+            .get('/performanceReviewPhrases')
+            .then(response => {
+                expect(response.status).toBe(200);
+            });
+        });
+    });
             .get('/performanceReviews')
             .then(response => {
                 expect(response.body).toStrictEqual(performanceReviewPhrasesJson);
