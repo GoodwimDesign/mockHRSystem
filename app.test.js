@@ -36,9 +36,27 @@ describe('mockHRSystem', () => {
             });
         });
     });
+    describe('performanceReview GET', () => {
+        const performanceReviews = [{
+            employeeId: employeeJson[0].employeeId,
+            performanceReviews: {
+                positive: performanceReviewPhrasesJson.positive[0],
+                negative: performanceReviewPhrasesJson.negative[0],
+            }
+        },
+        {
+            employeeId: employeeJson[1].employeeId,
+            performanceReviews: {
+                positive: performanceReviewPhrasesJson.positive[1],
+                negative: performanceReviewPhrasesJson.negative[1],
+            }
+        },
+    ]
+        test('returns performance reviews data for 2 employees by default', () => {            
+            return request(app)
             .get('/performanceReviews')
             .then(response => {
-                expect(response.body).toStrictEqual(performanceReviewPhrasesJson);
+                expect(response.body).toStrictEqual(performanceReviews);
             });
         });
         test('returns status code 200', () => {
