@@ -43,16 +43,9 @@ describe('mockHRSystem', () => {
                 positive: performanceReviewPhrasesJson.positive[0],
                 negative: performanceReviewPhrasesJson.negative[0],
             }
-        },
-        {
-            employeeId: employeeJson[1].employeeId,
-            performanceReviews: {
-                positive: performanceReviewPhrasesJson.positive[1],
-                negative: performanceReviewPhrasesJson.negative[1],
-            }
-        },
+        },        
     ]
-        test('returns performance reviews data for 2 employees by default', () => {            
+        test('returns performance reviews data for 1 employees by default', () => {            
             return request(app)
             .get('/performanceReviews')
             .then(response => {
@@ -62,6 +55,13 @@ describe('mockHRSystem', () => {
         test('returns performance reviews data for number of employees specified by the query string', () => {
             const threePerformanceReviews = [
                 ...performanceReviews,
+                {
+                    employeeId: employeeJson[1].employeeId,
+                    performanceReviews: {
+                        positive: performanceReviewPhrasesJson.positive[1],
+                        negative: performanceReviewPhrasesJson.negative[1],
+                    }
+                },
                 {
                     employeeId: employeeJson[2].employeeId,
                     performanceReviews: {
