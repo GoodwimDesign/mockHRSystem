@@ -4,7 +4,7 @@ var getCombinedData = function (employeeJson, phrasesJson, numberOfEmployees) {
     for (var x = 0; x < numberOfEmployees; x++) {
         combinedData.push({
                 employeeId: employeeJson[x].employeeId,
-                peformanceReviews: {
+                performanceReviews: {
                     positive: phrasesJson.positive[x],
                     negative: phrasesJson.negative[x]
                 }

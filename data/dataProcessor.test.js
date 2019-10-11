@@ -8,21 +8,21 @@ describe('data processor', () => {
         test('combines employee and review data for 2 employees', () => {
             const expected = [{
                     employeeId: employeeJson[0].employeeId,
-                    peformanceReviews: {
+                    performanceReviews: {
                         positive: performanceReviewPhrasesJson.positive[0],
                         negative: performanceReviewPhrasesJson.negative[0]
                     }
                 },
                 {
                     employeeId: employeeJson[1].employeeId,
-                    peformanceReviews: {
+                    performanceReviews: {
                         positive: performanceReviewPhrasesJson.positive[1],
                         negative: performanceReviewPhrasesJson.negative[1]
                     }
                 }
             ]
             
-            const result = getCombinedData(employeeJson, performanceReviewPhrasesJson, 2);
+            const result = getCombinedData(employeeJson, performanceReviewPhrasesJson);
 
             expect(result).toStrictEqual(expected);
         });
@@ -32,7 +32,7 @@ describe('data processor', () => {
             for (var x = 0; x < 20; x++) {
                 expected.push({
                         employeeId: employeeJson[x].employeeId,
-                        peformanceReviews: {
+                        performanceReviews: {
                             positive: performanceReviewPhrasesJson.positive[x],
                             negative: performanceReviewPhrasesJson.negative[x]
                         }
