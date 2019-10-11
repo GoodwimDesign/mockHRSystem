@@ -10,7 +10,8 @@ app.get('/employees', (req, res) => res.status(200).send(employeeJson));
 app.get('/performanceReviewPhrases', (req, res) => res.status(200).send(performanceReviewPhrasesJson));
 
 app.get('/performanceReviews', (req, res) => {
-    const combinedPerformanceReviewData = getCombinedData(employeeJson, performanceReviewPhrasesJson, 2);
+    const numberOfEmployees = req.query.numberOfEmployees;
+    const combinedPerformanceReviewData = getCombinedData(employeeJson, performanceReviewPhrasesJson, numberOfEmployees);
     return res.status(200).send(combinedPerformanceReviewData);
 });
 

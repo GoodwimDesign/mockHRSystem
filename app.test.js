@@ -59,6 +59,23 @@ describe('mockHRSystem', () => {
                 expect(response.body).toStrictEqual(performanceReviews);
             });
         });
+        test('returns performance reviews data for number of employees specified by the query string', () => {
+            const threePerformanceReviews = [
+                ...performanceReviews,
+                {
+                    employeeId: employeeJson[2].employeeId,
+                    performanceReviews: {
+                        positive: performanceReviewPhrasesJson.positive[2],
+                        negative: performanceReviewPhrasesJson.negative[2],
+                    }
+                }
+            ]            
+            return request(app)
+            .get('/performanceReviews?numberOfEmployees=3')
+            .then(response => {
+                expect(response.body).toStrictEqual(threePerformanceReviews);
+            });
+        });
         test('returns status code 200', () => {
             return request(app)
             .get('/performanceReviews')
