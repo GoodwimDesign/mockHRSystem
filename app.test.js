@@ -37,12 +37,18 @@ describe('mockHRSystem', () => {
         });
     });
     describe('performanceReview GET', () => {
+        let reviewText = '';
         const performanceReviews = [{
             employeeId: employeeJson[0].employeeId,
-            performanceReviews: {
-                positive: performanceReviewPhrasesJson.positive[0],
-                negative: performanceReviewPhrasesJson.negative[0],
-            }
+            performanceReviews: [{
+                reviewId: 1,
+                reviewDate: new Date('August 19, 1975').toString(),
+                reviewText: reviewText.concat(
+                    performanceReviewPhrasesJson.positive[0],
+                    ' ',
+                    performanceReviewPhrasesJson.negative[0]
+                ),            
+            }],
         },        
     ]
         test('returns performance reviews data for 1 employees by default', () => {            
@@ -53,27 +59,37 @@ describe('mockHRSystem', () => {
             });
         });
         test('returns performance reviews data for number of employees specified by the query string', () => {
-            const threePerformanceReviews = [
-                ...performanceReviews,
+            performanceReviews.push(
                 {
-                    employeeId: employeeJson[1].employeeId,
-                    performanceReviews: {
-                        positive: performanceReviewPhrasesJson.positive[1],
-                        negative: performanceReviewPhrasesJson.negative[1],
-                    }
+                    employeeId: 2,
+                    performanceReviews: [{
+                        reviewId: 1,
+                        reviewDate: new Date('August 19, 1975').toString(),
+                        reviewText: reviewText.concat(
+                            performanceReviewPhrasesJson.positive[1],
+                            ' ',
+                            performanceReviewPhrasesJson.negative[1],
+                        ),            
+                    }],
                 },
                 {
-                    employeeId: employeeJson[2].employeeId,
-                    performanceReviews: {
-                        positive: performanceReviewPhrasesJson.positive[2],
-                        negative: performanceReviewPhrasesJson.negative[2],
-                    }
-                }
-            ]            
+                    employeeId: 3,
+                    performanceReviews: [{
+                        reviewId: 1,
+                        reviewDate: new Date('August 19, 1975').toString(),
+                        reviewText: reviewText.concat(
+                            performanceReviewPhrasesJson.positive[2],
+                            ' ',
+                            performanceReviewPhrasesJson.negative[2],
+                        ),            
+                    }],
+                },
+            )
+                        
             return request(app)
             .get('/performanceReviews?numberOfEmployees=3')
             .then(response => {
-                expect(response.body).toStrictEqual(threePerformanceReviews);
+                expect(response.body).toStrictEqual(performanceReviews);
             });
         });
         test('returns status code 200', () => {
