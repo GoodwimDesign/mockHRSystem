@@ -11,7 +11,14 @@ app.get('/performanceReviewPhrases', (req, res) => res.status(200).send(performa
 
 app.get('/performanceReviews', (req, res) => {
     const numberOfEmployees = req.query.numberOfEmployees;
-    const combinedPerformanceReviewData = getCombinedData(employeeJson, performanceReviewPhrasesJson, numberOfEmployees);
+    const sentiment = req.query.sentiment;
+
+    const combinedPerformanceReviewData = getCombinedData(
+        employeeJson, 
+        performanceReviewPhrasesJson, 
+        numberOfEmployees,
+        sentiment
+    );
     return res.status(200).send(combinedPerformanceReviewData);
 });
 

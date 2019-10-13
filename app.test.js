@@ -58,7 +58,7 @@ describe('mockHRSystem', () => {
                 expect(response.status).toBe(200);
             });
         });
-        
+
         describe('performance reviews data', () => {     
             test('for 1 employees by default', async () => {            
                 return request(app)
@@ -68,7 +68,7 @@ describe('mockHRSystem', () => {
                 });
             });
 
-            test('for number of employees specified by the query string', async () => {
+            test('for number of employees specified by the query param', async () => {
                 performanceReviews.push(
                     {
                         employeeId: 2,
@@ -100,6 +100,25 @@ describe('mockHRSystem', () => {
                 .get('/performanceReviews?numberOfEmployees=3')
                 .then(response => {
                     expect(response.body).toStrictEqual(performanceReviews);
+                });
+            });
+
+            test('with a positive sentiment with a query param', async () => {
+                const positivePerformanceReview = [{
+                    employeeId: employeeJson[0].employeeId,
+                    performanceReviews: [{
+                        reviewId: 1,
+                        reviewDate: new Date('August 19, 1975').toString(),
+                        reviewText: reviewText.concat(
+                            performanceReviewPhrasesJson.positive[0],
+                        ),            
+                    }],
+                }];
+
+                return request(app)
+                .get('/performanceReviews?sentiment=positive')
+                .then(response => {
+                    expect(response.body).toStrictEqual(positivePerformanceReview);
                 });
             });
         });
