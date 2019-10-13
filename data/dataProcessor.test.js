@@ -110,5 +110,42 @@ describe('data processor', () => {
             expect(result).toStrictEqual(expected);
             });
         });
+        describe('negative results', () => {
+            const sentiment = 'negative';
+
+            test('are returned when sentiment is set to negative', () => {
+                const expected = [{
+                    employeeId: employeeJson[0].employeeId,                     
+                    performanceReviews: [{
+                        reviewId: 1,
+                        reviewDate: new Date('August 19, 1975').toString(),
+                        reviewText: reviewText.concat(
+                            performanceReviewPhrasesJson.negative[0],                            
+                        ),                            
+                    }]
+                }]
+            
+                const result = getCombinedData(employeeJson, performanceReviewPhrasesJson, 1, sentiment);
+
+                expect(result).toStrictEqual(expected);
+            });
+
+            test('for 1 employee by default', () => {
+                const expected = [{
+                    employeeId: employeeJson[0].employeeId,                     
+                    performanceReviews: [{
+                        reviewId: 1,
+                        reviewDate: new Date('August 19, 1975').toString(),
+                        reviewText: reviewText.concat(
+                            performanceReviewPhrasesJson.negative[0],                            
+                        ),                            
+                    }]
+                }]
+            
+            const result = getCombinedData(employeeJson, performanceReviewPhrasesJson, 1, sentiment);
+
+            expect(result).toStrictEqual(expected);
+            });
+        });
     });
 });

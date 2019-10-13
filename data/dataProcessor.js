@@ -1,6 +1,8 @@
 const buildReviewText = function(index, reviewText, sentiment, phrasesJson) {
     if (sentiment === 'positive') {
         return reviewText.concat(phrasesJson.positive[index]);
+    } else if (sentiment === 'negative'){
+        return reviewText.concat(phrasesJson.negative[index]);
     } else {
         return reviewText.concat(
             phrasesJson.positive[index],
