@@ -122,6 +122,25 @@ describe('mockHRSystem', () => {
                 });
             });
 
+            test('with a negative sentiment with a query param', async () => {
+                const negativePerformanceReview = [{
+                    employeeId: employeeJson[0].employeeId,
+                    performanceReviews: [{
+                        reviewId: 1,
+                        reviewDate: new Date('August 19, 1975').toString(),
+                        reviewText: reviewText.concat(
+                            performanceReviewPhrasesJson.negative[0],
+                        ),            
+                    }],
+                }];
+
+                return request(app)
+                .get('/performanceReviews?sentiment=negative')
+                .then(response => {
+                    expect(response.body).toStrictEqual(negativePerformanceReview);
+                });
+            });
+
             test('with results of multiple query params', async () => {
                 const multipleQueryParamPerformanceReviews = [
                     {
