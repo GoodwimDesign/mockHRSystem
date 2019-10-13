@@ -121,6 +121,47 @@ describe('mockHRSystem', () => {
                     expect(response.body).toStrictEqual(positivePerformanceReview);
                 });
             });
+
+            test('with results of multiple query params', async () => {
+                const multipleQueryParamPerformanceReviews = [
+                    {
+                        employeeId: 1,
+                        performanceReviews: [{
+                            reviewId: 1,
+                            reviewDate: new Date('August 19, 1975').toString(),
+                            reviewText: reviewText.concat(
+                                performanceReviewPhrasesJson.positive[0],
+                            ),            
+                        }],
+                    },
+                    {
+                        employeeId: 2,
+                        performanceReviews: [{
+                            reviewId: 1,
+                            reviewDate: new Date('August 19, 1975').toString(),
+                            reviewText: reviewText.concat(
+                                performanceReviewPhrasesJson.positive[1],
+                            ),            
+                        }],
+                    },
+                    {
+                        employeeId: 3,
+                        performanceReviews: [{
+                            reviewId: 1,
+                            reviewDate: new Date('August 19, 1975').toString(),
+                            reviewText: reviewText.concat(
+                                performanceReviewPhrasesJson.positive[2],
+                            ),            
+                        }],
+                    },
+                ]
+
+                return request(app)
+                .get('/performanceReviews?sentiment=positive&numberOfEmployees=3')
+                .then(response => {
+                    expect(response.body).toStrictEqual(multipleQueryParamPerformanceReviews);
+                });
+            });
         });
     });
 });
