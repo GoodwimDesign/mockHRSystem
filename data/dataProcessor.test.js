@@ -13,8 +13,6 @@ describe('data processor', () => {
         describe('neutral results', () => {   
             test('are returned when sentiment is set to netural', () => {
                 const expected = [{
-                    employeeId: employeeJson[0].employeeId,                     
-                    performanceReviews: [{
                         reviewId: 1,
                         reviewDate: new Date('August 19, 1975').toString(),
                         reviewText: reviewText.concat(
@@ -22,17 +20,23 @@ describe('data processor', () => {
                             ' ',
                             performanceReviewPhrasesJson.negative[0]
                         ),                            
-                    }]
                 }];
 
                 const result = getCombinedData(employeeJson, performanceReviewPhrasesJson, 1, 'neutral');
 
-                expect(result).toStrictEqual(expected);
+                expect(result[0].performanceReviews).toStrictEqual(expected);
             });
 
             test('for 1 employee by default', () => {
                 const expected = [{
-                    employeeId: employeeJson[0].employeeId,                     
+                    employeeId: employeeJson[0].employeeId,
+                    firstName: employeeJson[0].first_name,
+                    lastName: employeeJson[0].last_name,
+                    gender: employeeJson[0].gender,
+                    race: employeeJson[0].race,
+                    dob: employeeJson[0].age,
+                    jobTitle: employeeJson[0].job_title,
+                    department: employeeJson[0].department,
                     performanceReviews: [{
                         reviewId: 1,
                         reviewDate: new Date('August 19, 1975').toString(),
@@ -49,12 +53,19 @@ describe('data processor', () => {
                 expect(result).toStrictEqual(expected);
             });
 
-            test('combines employee and review data for 20 employees', () => {
+            test('for 20 employees', () => {
                 const expected = [];
                 
                 for (var x = 0; x < 20; x++) {
                     expected.push({
-                            employeeId: employeeJson[x].employeeId,                         
+                            employeeId: employeeJson[x].employeeId,
+                            firstName: employeeJson[x].first_name,
+                            lastName: employeeJson[x].last_name,
+                            gender: employeeJson[x].gender,
+                            race: employeeJson[x].race,
+                            dob: employeeJson[x].age,
+                            jobTitle: employeeJson[x].job_title,
+                            department: employeeJson[x].department, 
                             performanceReviews: [{
                                 reviewId: 1,
                                 reviewDate: new Date('August 19, 1975').toString(),
@@ -78,24 +89,28 @@ describe('data processor', () => {
 
             test('are returned when sentiment is set to positive', () => {
                 const expected = [{
-                    employeeId: employeeJson[0].employeeId,                     
-                    performanceReviews: [{
                         reviewId: 1,
                         reviewDate: new Date('August 19, 1975').toString(),
                         reviewText: reviewText.concat(
                             performanceReviewPhrasesJson.positive[0],                            
                         ),                            
-                    }]
                 }]
-            
+
                 const result = getCombinedData(employeeJson, performanceReviewPhrasesJson, 1, sentiment);
 
-                expect(result).toStrictEqual(expected);
+                expect(result[0].performanceReviews).toStrictEqual(expected);
             });
 
             test('for 1 employee by default', () => {
                 const expected = [{
-                    employeeId: employeeJson[0].employeeId,                     
+                    employeeId: employeeJson[0].employeeId,
+                    firstName: employeeJson[0].first_name,
+                    lastName: employeeJson[0].last_name,
+                    gender: employeeJson[0].gender,
+                    race: employeeJson[0].race,
+                    dob: employeeJson[0].age,
+                    jobTitle: employeeJson[0].job_title,
+                    department: employeeJson[0].department,
                     performanceReviews: [{
                         reviewId: 1,
                         reviewDate: new Date('August 19, 1975').toString(),
@@ -115,24 +130,28 @@ describe('data processor', () => {
 
             test('are returned when sentiment is set to negative', () => {
                 const expected = [{
-                    employeeId: employeeJson[0].employeeId,                     
-                    performanceReviews: [{
                         reviewId: 1,
                         reviewDate: new Date('August 19, 1975').toString(),
                         reviewText: reviewText.concat(
                             performanceReviewPhrasesJson.negative[0],                            
                         ),                            
-                    }]
-                }]
+                    }]                
             
                 const result = getCombinedData(employeeJson, performanceReviewPhrasesJson, 1, sentiment);
 
-                expect(result).toStrictEqual(expected);
+                expect(result[0].performanceReviews).toStrictEqual(expected);
             });
 
             test('for 1 employee by default', () => {
                 const expected = [{
-                    employeeId: employeeJson[0].employeeId,                     
+                    employeeId: employeeJson[0].employeeId,                    
+                    firstName: employeeJson[0].first_name,
+                    lastName: employeeJson[0].last_name,
+                    gender: employeeJson[0].gender,
+                    race: employeeJson[0].race,
+                    dob: employeeJson[0].age,
+                    jobTitle: employeeJson[0].job_title,
+                    department: employeeJson[0].department,                     
                     performanceReviews: [{
                         reviewId: 1,
                         reviewDate: new Date('August 19, 1975').toString(),
@@ -146,6 +165,6 @@ describe('data processor', () => {
 
             expect(result).toStrictEqual(expected);
             });
-        });
+        });       
     });
 });

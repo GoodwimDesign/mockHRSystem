@@ -24,6 +24,14 @@ const getCombinedData = function (
     for (let x = 0; x < numberOfEmployees; x++) { 
         combinedData.push({
                 employeeId: employeeJson[x].employeeId,
+                employeeId: employeeJson[x].employeeId,
+                firstName: employeeJson[x].first_name,
+                lastName: employeeJson[x].last_name,
+                gender: employeeJson[x].gender,
+                race: employeeJson[x].race,
+                dob: employeeJson[x].age,
+                jobTitle: employeeJson[x].job_title,
+                department: employeeJson[x].department,
                 performanceReviews: [{
                     reviewId: 1,
                     reviewDate: new Date('August 19, 1975').toString(),

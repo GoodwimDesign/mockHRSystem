@@ -40,6 +40,13 @@ describe('mockHRSystem', () => {
         let reviewText = '';
         const performanceReviews = [{
             employeeId: employeeJson[0].employeeId,
+            firstName: employeeJson[0].first_name,
+            lastName: employeeJson[0].last_name,
+            gender: employeeJson[0].gender,
+            race: employeeJson[0].race,
+            dob: employeeJson[0].age,
+            jobTitle: employeeJson[0].job_title,
+            department: employeeJson[0].department, 
             performanceReviews: [{
                 reviewId: 1,
                 reviewDate: new Date('August 19, 1975').toString(),
@@ -72,6 +79,13 @@ describe('mockHRSystem', () => {
                 performanceReviews.push(
                     {
                         employeeId: 2,
+                        firstName: employeeJson[1].first_name,
+                        lastName: employeeJson[1].last_name,
+                        gender: employeeJson[1].gender,
+                        race: employeeJson[1].race,
+                        dob: employeeJson[1].age,
+                        jobTitle: employeeJson[1].job_title,
+                        department: employeeJson[1].department, 
                         performanceReviews: [{
                             reviewId: 1,
                             reviewDate: new Date('August 19, 1975').toString(),
@@ -84,6 +98,13 @@ describe('mockHRSystem', () => {
                     },
                     {
                         employeeId: 3,
+                        firstName: employeeJson[2].first_name,
+                        lastName: employeeJson[2].last_name,
+                        gender: employeeJson[2].gender,
+                        race: employeeJson[2].race,
+                        dob: employeeJson[2].age,
+                        jobTitle: employeeJson[2].job_title,
+                        department: employeeJson[2].department, 
                         performanceReviews: [{
                             reviewId: 1,
                             reviewDate: new Date('August 19, 1975').toString(),
@@ -106,6 +127,13 @@ describe('mockHRSystem', () => {
             test('with a positive sentiment with a query param', async () => {
                 const positivePerformanceReview = [{
                     employeeId: employeeJson[0].employeeId,
+                    firstName: employeeJson[0].first_name,
+                    lastName: employeeJson[0].last_name,
+                    gender: employeeJson[0].gender,
+                    race: employeeJson[0].race,
+                    dob: employeeJson[0].age,
+                    jobTitle: employeeJson[0].job_title,
+                    department: employeeJson[0].department, 
                     performanceReviews: [{
                         reviewId: 1,
                         reviewDate: new Date('August 19, 1975').toString(),
@@ -125,6 +153,13 @@ describe('mockHRSystem', () => {
             test('with a negative sentiment with a query param', async () => {
                 const negativePerformanceReview = [{
                     employeeId: employeeJson[0].employeeId,
+                    firstName: employeeJson[0].first_name,
+                    lastName: employeeJson[0].last_name,
+                    gender: employeeJson[0].gender,
+                    race: employeeJson[0].race,
+                    dob: employeeJson[0].age,
+                    jobTitle: employeeJson[0].job_title,
+                    department: employeeJson[0].department, 
                     performanceReviews: [{
                         reviewId: 1,
                         reviewDate: new Date('August 19, 1975').toString(),
@@ -145,6 +180,13 @@ describe('mockHRSystem', () => {
                 const multipleQueryParamPerformanceReviews = [
                     {
                         employeeId: 1,
+                        firstName: employeeJson[0].first_name,
+                        lastName: employeeJson[0].last_name,
+                        gender: employeeJson[0].gender,
+                        race: employeeJson[0].race,
+                        dob: employeeJson[0].age,
+                        jobTitle: employeeJson[0].job_title,
+                        department: employeeJson[0].department, 
                         performanceReviews: [{
                             reviewId: 1,
                             reviewDate: new Date('August 19, 1975').toString(),
@@ -155,6 +197,13 @@ describe('mockHRSystem', () => {
                     },
                     {
                         employeeId: 2,
+                        firstName: employeeJson[1].first_name,
+                        lastName: employeeJson[1].last_name,
+                        gender: employeeJson[1].gender,
+                        race: employeeJson[1].race,
+                        dob: employeeJson[1].age,
+                        jobTitle: employeeJson[1].job_title,
+                        department: employeeJson[1].department, 
                         performanceReviews: [{
                             reviewId: 1,
                             reviewDate: new Date('August 19, 1975').toString(),
@@ -165,6 +214,13 @@ describe('mockHRSystem', () => {
                     },
                     {
                         employeeId: 3,
+                        firstName: employeeJson[2].first_name,
+                        lastName: employeeJson[2].last_name,
+                        gender: employeeJson[2].gender,
+                        race: employeeJson[2].race,
+                        dob: employeeJson[2].age,
+                        jobTitle: employeeJson[2].job_title,
+                        department: employeeJson[2].department, 
                         performanceReviews: [{
                             reviewId: 1,
                             reviewDate: new Date('August 19, 1975').toString(),
