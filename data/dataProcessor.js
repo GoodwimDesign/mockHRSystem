@@ -1,6 +1,18 @@
-const getCombinedData = function (employeeJson, phrasesJson, numberOfEmployees = 1) {
+const getCombinedData = function (employeeJson, phrasesJson, numberOfEmployees = 1, sentiment = 'neutral') {
     const combinedData = [];
     let reviewText = '';
+
+    const buildReviewText = function(index) {
+        if (sentiment === 'positive') {
+            return reviewText.concat(phrasesJson.positive[index]);
+        } else {
+            return reviewText.concat(
+                phrasesJson.positive[index],
+                ' ',
+                phrasesJson.negative[index]
+            )
+        }
+    };
     
     for (let x = 0; x < numberOfEmployees; x++) {                
         combinedData.push({
@@ -8,11 +20,7 @@ const getCombinedData = function (employeeJson, phrasesJson, numberOfEmployees =
                 performanceReviews: [{
                     reviewId: 1,
                     reviewDate: new Date('August 19, 1975').toString(),
-                    reviewText: reviewText.concat(
-                            phrasesJson.positive[x],
-                            ' ',
-                            phrasesJson.negative[x]
-                        ),          
+                    reviewText: buildReviewText(x),          
                 }]
             }
         );
